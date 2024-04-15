@@ -1,6 +1,7 @@
 package com.example.demo2.question;
 
 import com.example.demo2.answer.Answer;
+import com.example.demo2.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,4 +33,7 @@ public class Question {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList = new ArrayList<>();
+
+    @ManyToOne
+    private SiteUser author;
 }
