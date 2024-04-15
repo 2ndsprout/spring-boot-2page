@@ -27,5 +27,15 @@ class Demo2ApplicationTests {
 		this.answerService.create(q1, "알려드릴게요");
 		this.answerService.create(q2, "네 자동으로 생성 됩니다.");
 	}
+	@Test
+	@Transactional
+	@Rollback(value = false)
+	void testJpa() {
+		for (int i = 1; i <= 300; i++) {
+			String subject = String.format("테스트 데이터입니다:[%03d]", i);
+			String content = "내용무";
+			this.questionService.create(subject, content);
+		}
+	}
 
 }
