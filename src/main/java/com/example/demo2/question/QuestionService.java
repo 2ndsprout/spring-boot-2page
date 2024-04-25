@@ -21,10 +21,10 @@ public class QuestionService {
     private final QuestionRepository questionRepository;
 
     public Page<Question> getList(int page) {
-        List<Sort.Order> sorts = new ArrayList<>();
-        sorts.add(Sort.Order.desc("createDate"));
-        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        return this.questionRepository.findAll(pageable);
+        List<Sort.Order> sorts = new ArrayList<>(); // Sort 는 데이터를 정렬하는 과정이며 sorts 객체 안에 정렬과정을 넣을 수 있음
+        sorts.add(Sort.Order.desc("createDate")); // sorts 객체 안에 createDate 를 desc 순으로 정렬하는 과정 추가
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts)); // 매개변수 page(해당 페이지)에 갯수(게시물개수)를 Sort.by(sorts(정렬과정)) 순으로 정렬
+        return this.questionRepository.findAll(pageable); // pageable 객체에 정의 되어있는 정렬방식으로 모든 question 객체를 찾음.
     }
 
     public Question getQuestion(Integer id) {
